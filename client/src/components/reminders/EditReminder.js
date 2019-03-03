@@ -8,6 +8,7 @@ import ReminderForm from "./ReminderForm";
 class EditReminder extends React.Component {
 	onSubmit = formValues => {
 		this.props.editReminder(this.props.selectedReminder._id, formValues);
+		this.props.updateSelectedReminder(null);
 	};
 
 	render() {

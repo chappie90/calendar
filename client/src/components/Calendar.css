@@ -1,0 +1,16 @@
+.flex {
+	display: flex;
+	justify-content: center;
+}
+.flex-direction {
+	flex-direction: column;
+}
+.reminder-label {
+	width: 100%;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pointer {
+	cursor: pointer;
+}

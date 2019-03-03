@@ -8,14 +8,23 @@ module.exports = app => {
 		const reminder = await Reminder.find();
 		res.send(reminder);
 	});
-	app.get("/reminders/create", async (req, res) => {
+	app.post("/reminders/create", async (req, res) => {
 		const reminder = await new Reminder({
-			date: "04-06-2019",
-			time: "11:00",
-			reminder: "Hey ho",
-			priority: "Low",
-			id: 5
+			date: req.body.date,
+			time: req.body.time,
+			reminder: req.body.reminder,
+			priority: req.body.priority
 		}).save();
-		res.send(reminder);
+		res.send();
+	});
+	app.patch("/reminders/edit/:id", async (req, res) => {
+		const reminder = await Reminder.findByIdAndUpdate(req.params.id, {
+			$set: req.body
+		});
+		res.send();
+	});
+	app.delete("/reminders/delete/:id", async (req, res) => {
+		const reminder = await Reminder.findByIdAndRemove(req.params.id);
+		res.send();
 	});
 };
